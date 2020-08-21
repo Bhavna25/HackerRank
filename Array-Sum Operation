@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+int main() {
+    long  n, m, s=0, op[int(1e5)], f, l, v, temp, i;
+    cin>>n>>m;
+    for(i=0; i<m; i++) {
+        cin>>v;
+        op[i] = v;
+    }
+    f = 1;
+    l = n;
+    s = long(n*(n+1)/2)-1-n;
+    for(i=0; i<m; i++) {
+        v = op[i];
+        if(v==f || v==l || (v>1 && v<n)) {
+            temp = f;
+            f = l;
+            l = temp;
+        }
+        else {
+            l = v;
+        }
+       op[i] = s + l + f;
+    }
+    for(i=0; i<m; i++) {
+        cout<<op[i]<<endl;
+    }
+    return 0;
+}
